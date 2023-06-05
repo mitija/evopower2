@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="evo_form_product" model="ir.ui.view">
+    <field name="name">crm.lead.form.inherit</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='tag_ids']" position="after">
+        <field name="installer"/>
+        <field name="product_ids" string="Solution"/>
+        <field name="quantity" />
+        <field name="last_contact_date"/>
+        <field name="follow_up_comments" />
+        <field name="usable_kWh_product"/>
+        <field name="power_kWh_product"/>
+        <field name="probability" string="Chance of Sale"/>
+        <field name="power_kWh_opportunity"/>
+        <field name="usable_kWh_opportunity"/>
+
+      </xpath>
+
+    </field>
+  </record>
+
+
+
+
+</odoo>

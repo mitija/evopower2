@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="sales_opportunity_report" model="ir.ui.view">
+    <field name="name">sales.opportunity.register</field>
+    <field name="model">crm.lead</field>
+    <field name="type">tree</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="stage_id"/>
+        <field name="name"/>
+        <field name="system" />
+        <field name="create_date" widget="date"/>
+        <field name="country_id" options="{'no_open': True, 'no_create': True}"/>
+        <field name="description"/>
+        <field name="follow_up_comments"/>
+        <field name="last_contact_date" />
+        <field name="installer" />
+        <field name="solution"/>
+        <field name="power_kWh_product"/>
+        <field name="usable_kWh_product"/>
+        <field name="power_kWh_opportunity"/>
+        <field name="usable_kWh_opportunity"/>
+        <field name="potential_opportunity"/>
+        <field name="probability" />
+        <field name="date_deadline" />
+        <field name="weighted_forecast"/>
+        <field name="kw_weighted_forecast"/>
+        <field name="kwh_weighted_forecast"/>
+      </tree>
+    </field>
+
+  </record>
+
+  <record id="action_sales_opportunity_register" model="ir.actions.act_window">
+    <field name="name">Sales Opportunity Register</field>
+    <field name="res_model">crm.lead</field>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="sales_opportunity_report"></field>
+  </record>
+
+  <menuitem id="evo_sale_opportunity" name="Sale Opportunity Register" parent="crm.crm_menu_report" action="action_sales_opportunity_register" sequence="6"/>
+</odoo>
