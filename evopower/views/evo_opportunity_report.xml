@@ -22,8 +22,8 @@
         <field name="usable_kWh_product"/>
         <field name="power_kW_opportunity"/>
         <field name="usable_kWh_opportunity"/>
-        <field name="potential_opportunity" widget="monetary"/>
-        <field name="chance_of_sale" widget="percentage"/>
+        <field name="expected_revenue" sum="Potential Opportunity" string="Potential Opportunity" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+        <field name="chance_of_sale" string="Chance of Sale" widget="percentage"/>
         <field name="date_deadline" string="Potential PO Date"/>
         <field name="weighted_forecast"/>
         <field name="kw_weighted_forecast"/>

@@ -8,35 +8,36 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='tag_ids']" position="after">
         <field name="state_id" string="Location" />
+
+        <field name="product_ids" string="Solution"/>
         <field name="quantity" />
-        <field name="follow_up_comments" />
-        <field name="power_kW_product"/>
-        <field name="chance_of_sale"/>
+        <field name="usable_kWh_opportunity"/>
         <field name="power_kW_opportunity"/>
+
 
       </xpath>
 
       <xpath expr="//group[@name='opportunity_partner']" position="after">
         <group name="evo_opportunity_form">
           <field name="installer"/>
-          <field name="product_ids" string="Solution"/>
           <field name="last_contact_date"/>
+          <field name="follow_up_comments" />
           <field name="usable_kWh_product"/>
-          <field name="usable_kWh_opportunity"/>
+          <field name="power_kW_product"/>
         </group>
       </xpath>
 
       <field name="user_id" position="attributes">
-          <attribute name="string">Owner</attribute>
-        </field>
+        <attribute name="string">Owner</attribute>
+      </field>
 
-        <field name="expected_revenue" position="attributes">
-          <attribute name="string">Potential Opportunity</attribute>
-        </field>
+      <field name="expected_revenue" position="attributes">
+        <attribute name="string">Potential Opportunity</attribute>
+      </field>
 
-        <field name="probability" position="attributes">
-          <attribute name="string">Chance of Sale</attribute>
-        </field>
+      <field name="probability" position="attributes">
+        <attribute name="string">Chance of Sale</attribute>
+      </field>
     </field>
   </record>
 
