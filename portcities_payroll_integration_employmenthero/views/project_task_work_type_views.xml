@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="project_task_work_type_view" model="ir.ui.view">
+        <field name="name">project.task.work.type.view</field>
+        <field name="model">project.task.work.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget='handle'/>
+                <field name="name"/>
+                <field name="kp_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_task_work_type_view_action" model="ir.actions.act_window">
+        <field name="name">Work Types</field>
+        <field name="res_model">project.task.work.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="project_task_work_type_view"/>
+    </record>
+
+    <menuitem id="project_task_work_type_menu"
+            name="Work Types"
+            sequence="50"
+            action="project_task_work_type_view_action"
+            parent="project.menu_project_config"/>
+</odoo>

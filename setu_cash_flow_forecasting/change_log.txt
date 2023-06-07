@@ -1,0 +1,15 @@
+Date         :  12th May 2023
+Version      : '16.2.0' (in __manifest__.py)
+Odoo Version : 16
+Done by : Ashish Rangani
+Tested by : Ashish Rangani
+Module : setu_cash_flow_forecasting
+ - Fixed weekly forecast calculation issue.
+
+Date         :  24 Apr 2023
+Version      : '16.1.0' (in __manifest__.py)
+Odoo Version : 16
+Done by : Ashish Rangani
+Tested by : Ashish Rangani
+Module : setu_cash_flow_forecasting
+ - Add a new feature for Daily and Weekly Forecast

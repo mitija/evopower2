@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sync_keypay_log_tree_view" model="ir.ui.view">
+        <field name="name">sync.keypay.log.tree.view</field>
+        <field name="model">sync.keypay.log</field>
+        <field name="arch" type="xml">
+            <tree string="Logs" decoration-danger="status == 'failed'">
+                <field name="ref_id"/>
+                <field name="action"/>
+                <field name="payload"/>
+                <field name="message"/>
+                <field name="status"/>
+                <field name="status_code"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sync_keypay_log_form_view" model="ir.ui.view">
+        <field name="name">sync.keypay.log.form.view</field>
+        <field name="model">sync.keypay.log</field>
+        <field name="arch" type="xml">
+            <form string="Logs">
+                <sheet>
+                    <group>
+                        <field name="ref_id"/>
+                        <field name="action"/>
+                        <field name="url"/>
+                        <field name="status_code"/>
+                        <field name="status" decoration-success="status == 'success'" decoration-danger="status == 'failed'"/>
+                        <field name="write_date"/>
+                        <field name="payload"/>
+                        <field name="message"/>
+                        <field name="timesheet_id"/>
+                        <field name="analytic_account_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sync_keypay_log_action" model="ir.actions.act_window">
+        <field name="name">Keypay Sync Logs</field>
+        <field name="res_model">sync.keypay.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="portcities_payroll_integration_employmenthero.sync_keypay_log_tree_view"/>
+    </record>
+
+    <menuitem id="sync_keypay_log_menu_root"
+        name="Keypay Sync"
+        action="sync_keypay_log_action"
+        web_icon="portcities_payroll_integration_employmenthero,static/src/img/keypay_log_icon.png"
+        groups="base.group_no_one"/>
+</odoo>
