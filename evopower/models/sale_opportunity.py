@@ -92,7 +92,6 @@ class EvoSaleOpportunity(models.Model):
                 record.comments = self._apply_html_regex(html_text) 
 
     def _apply_html_regex(self, html_text):
-
         html_pattern = "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>"
         cleaned_description = re.sub(html_pattern, '', html_text)
         return cleaned_description
@@ -104,15 +103,15 @@ class EvoCrmProduct(models.Model):
 
     product_ids = fields.Many2one('product.template', string='Products')
     lead_id = fields.Many2one('crm.lead', string='Leads')
+    company_currency = fields.Many2one(related='lead_id.company_currency', readonly=True, store=True)
     quantity = fields.Integer(_('Quantity'))
     power_kW_product = fields.Integer(_('Power kW Product'))
     usable_kWh_product = fields.Integer(_('Usable kWh Product'))
 
     system = fields.Char(related='product_ids.display_name')
     solution = fields.Char(related='product_ids.product_category')
-    product_price = fields.Integer(_('Price'), default=lambda self: self.product_ids.standard_price)
+    product_price = fields.Float(related='product_ids.list_price', string='Price', default=0.0, readonly=False, store=True)
     subtotal = fields.Integer(_('Subtotal'), compute='_count_subtotal')
-
     power_kW_opportunity = fields.Integer(string='Power kW Opportunity', compute='_power_kW_opportunity')
     usable_kWh_opportunity = fields.Integer(string='Usable kWh Opportunity', compute='_usable_kWh_opportunity')
     
@@ -130,5 +129,4 @@ class EvoCrmProduct(models.Model):
     def _usable_kWh_opportunity(self):
         for record in self:
             record.usable_kWh_opportunity = record.quantity * record.usable_kWh_product
-    
 

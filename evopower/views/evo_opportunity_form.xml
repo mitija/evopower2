@@ -48,12 +48,11 @@
               <field name="power_kW_product" sum="Power kW Total"/>
               <field name="usable_kWh_product" sum="Usable kWh Total" />
               <field name="quantity" />
-              <field name="product_price" widget="monetary"/>
-              <field name="subtotal" sum="Total" widget="monetary" />
-              <!-- <field name="company_currency" invisible="1"/> -->
+              <field name="product_price" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+              <field name="subtotal" sum="subtotal" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+              <field name="company_currency" invisible="1"/>
               <field name="power_kW_opportunity" />
               <field name="usable_kWh_opportunity" />
-
             </tree>
           </field>
         </page>
