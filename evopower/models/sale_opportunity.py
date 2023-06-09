@@ -1,7 +1,5 @@
 from odoo import _, api, fields, models
 import re
-import bleach
-
 class EvoSaleOpportunity(models.Model):
     _inherit = 'crm.lead'
     _order = 'stage_id'
