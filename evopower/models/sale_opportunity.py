@@ -1,7 +1,6 @@
 from odoo import _, api, fields, models
 import re
-import lxml.html
-import six
+import bleach
 
 class EvoSaleOpportunity(models.Model):
     _inherit = 'crm.lead'
@@ -91,21 +90,13 @@ class EvoSaleOpportunity(models.Model):
     def _compute_comments(self):
         for record in self:
             if record.description is not None: 
-                record.comments = self._apply_html_regex(record.description)
+                html_text = '' if not record.description else record.description
+                record.comments = self._apply_html_regex(html_text) 
 
     def _apply_html_regex(self, html_text):
-        if not isinstance(html_text, six.string_types):
-            return ""
 
-        is_full_html = self._looks_like_full_html_unicode(html_text)
-
-        if is_full_html:
-            tree = lxml.html.fromstring(html_text)
-            string = tree.text_content()
-        else:
-            string = html_text
         html_pattern = "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>"
-        cleaned_description = re.sub(html_pattern, '', string)
+        cleaned_description = re.sub(html_pattern, '', html_text)
         return cleaned_description
 
 
