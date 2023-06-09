@@ -20,11 +20,12 @@
         <field name="last_contact_date" />
         <field name="power_kW_opportunity"/>
         <field name="usable_kWh_opportunity"/>
+        <field name="nominal_value" />
         <field name="expected_revenue" sum="Potential Opportunity" string="Potential Opportunity" widget="monetary" options="{'currency_field': 'company_currency'}"/>
         <field name="company_currency" invisible="1"/>
         <field name="chance_of_sale" string="Chance of Sale" widget="percentage"/>
         <field name="date_deadline" string="Potential PO Date"/>
-        <field name="weighted_forecast" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+        <field name="weighted_forecast" widget="monetary" options="{'currency_field': 'company_currency'}" string="$ Weighted Forecast"/>
         <field name="kw_weighted_forecast"/>
         <field name="kwh_weighted_forecast"/>
       </tree>

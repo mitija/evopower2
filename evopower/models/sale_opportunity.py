@@ -1,4 +1,5 @@
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
+import re
 
 class EvoSaleOpportunity(models.Model):
     _inherit = 'crm.lead'
@@ -9,10 +10,10 @@ class EvoSaleOpportunity(models.Model):
     chance_of_sale = fields.Float(string='Chance of Sale', compute='_compute_chance_of_sale')
     follow_up_comments = fields.Char(_("Last Follow Up Comments"))
     last_contact_date = fields.Date()
-
+    weighted_nominal = fields.Integer(string='Weighted Nominal')
     system_all = fields.Char(_('System'), compute='_compute_system_string')
     solution_all = fields.Char(_('Solution'), compute='_compute_solution_string')
-
+    nominal_value = fields.Integer(string='Weighted Nominal Value', compute='_nominal_value')
     weighted_forecast = fields.Integer(string='Weighted Forecast', compute='_weighted_forecast')
 
     power_kW_opportunity = fields.Integer(string='Power kW Opportunity', compute='_power_kW_opportunity')
@@ -67,6 +68,11 @@ class EvoSaleOpportunity(models.Model):
             for product in record.product_ids:
                 kwh_oppor_total += (product.usable_kWh_product * product.quantity)
             record.usable_kWh_opportunity = kwh_oppor_total
+
+    @api.depends('weighted_nominal', 'probability')
+    def _nominal_value(self):
+        for record in self:
+            record.nominal_value = record.weighted_nominal * record.chance_of_sale
     
     @api.depends('product_ids', 'probability')
     def _kw_weighted_forecast(self):
@@ -77,6 +83,21 @@ class EvoSaleOpportunity(models.Model):
     def _kwh_weighteed_forecast(self):
         for record in self:
             record.kwh_weighted_forecast = record.usable_kWh_opportunity * record.chance_of_sale
+    
+    def _export_data(self, fields_to_export, options):
+        data = super(EvoSaleOpportunity, self)._export_data(fields_to_export, options)
+
+        if 'description' in fields_to_export:
+            for record in data:
+                if 'description' in record:
+                    record['description'] = self._apply_html_regex(record['description'])
+
+        return data
+
+    def _apply_html_regex(self, html_text):
+        html_pattern = "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>"
+        cleaned_description = re.sub(html_pattern, '', html_text)
+        return cleaned_description
 
 
 class EvoCrmProduct(models.Model):
