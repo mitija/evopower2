@@ -7,7 +7,7 @@
       <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
       <field name="arch" type="xml">
         <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
-          <attribute name="domain">["|", ("user_id", "=", uid), ("active", "=", True), ("active", "=", False)]</attribute>
+          <attribute name="domain">["|", ("user_id", "=", uid), "|", ("active", "=", True), ("active", "=", False)]</attribute>
         </xpath>
       </field>
     </record>

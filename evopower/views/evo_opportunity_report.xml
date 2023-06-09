@@ -13,7 +13,7 @@
         <field name="create_date" widget="date" string="Date Entered"/>
         <field name="user_id" string="Owner"/>
         <field name="state_id" string="Location"/>
-        <field name="description" string="Comments"/>
+        <field name="comments"/>
         <field name="solution_all"/>
         <field name="system_all" string="System"/>
         <field name="follow_up_comments"/>
@@ -28,6 +28,7 @@
         <field name="weighted_forecast" widget="monetary" options="{'currency_field': 'company_currency'}" string="$ Weighted Forecast"/>
         <field name="kw_weighted_forecast"/>
         <field name="kwh_weighted_forecast"/>
+        <field name="weighted_nominal" />
       </tree>
     </field>
 

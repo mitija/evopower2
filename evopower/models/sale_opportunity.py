@@ -1,5 +1,7 @@
 from odoo import _, api, fields, models
 import re
+import lxml.html
+import six
 
 class EvoSaleOpportunity(models.Model):
     _inherit = 'crm.lead'
@@ -9,6 +11,7 @@ class EvoSaleOpportunity(models.Model):
     installer = fields.Char(_("Installer"))
     chance_of_sale = fields.Float(string='Chance of Sale', compute='_compute_chance_of_sale')
     follow_up_comments = fields.Char(_("Last Follow Up Comments"))
+    comments = fields.Char(_("Comments"), compute='_compute_comments')
     last_contact_date = fields.Date()
     weighted_nominal = fields.Integer(string='Weighted Nominal')
     system_all = fields.Char(_('System'), compute='_compute_system_string')
@@ -84,19 +87,25 @@ class EvoSaleOpportunity(models.Model):
         for record in self:
             record.kwh_weighted_forecast = record.usable_kWh_opportunity * record.chance_of_sale
     
-    def _export_data(self, fields_to_export, options):
-        data = super(EvoSaleOpportunity, self)._export_data(fields_to_export, options)
-
-        if 'description' in fields_to_export:
-            for record in data:
-                if 'description' in record:
-                    record['description'] = self._apply_html_regex(record['description'])
-
-        return data
+    @api.depends('description')
+    def _compute_comments(self):
+        for record in self:
+            if record.description is not None: 
+                record.comments = self._apply_html_regex(record.description)
 
     def _apply_html_regex(self, html_text):
+        if not isinstance(html_text, six.string_types):
+            return ""
+
+        is_full_html = self._looks_like_full_html_unicode(html_text)
+
+        if is_full_html:
+            tree = lxml.html.fromstring(html_text)
+            string = tree.text_content()
+        else:
+            string = html_text
         html_pattern = "<(?:\"[^\"]*\"['\"]*|'[^']*'['\"]*|[^'\">])+>"
-        cleaned_description = re.sub(html_pattern, '', html_text)
+        cleaned_description = re.sub(html_pattern, '', string)
         return cleaned_description
 
 

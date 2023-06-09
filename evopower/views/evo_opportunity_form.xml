@@ -43,13 +43,13 @@
         <page string="Product" name="crm_product">
           <field name="product_ids" widget="one2many">
             <tree string="Add Product" editable="bottom">
-              <field name="product_ids" />
+              <field name="product_ids" string="System"/>
               <field name="solution" />
-              <field name="power_kW_product" />
-              <field name="usable_kWh_product" />
+              <field name="power_kW_product" sum="Power kW Total"/>
+              <field name="usable_kWh_product" sum="Usable kWh Total" />
               <field name="quantity" />
               <field name="product_price" widget="monetary"/>
-              <field name="subtotal"  sum="Total" widget="monetary" />
+              <field name="subtotal" sum="Total" widget="monetary" />
               <!-- <field name="company_currency" invisible="1"/> -->
               <field name="power_kW_opportunity" />
               <field name="usable_kWh_opportunity" />
