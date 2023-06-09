@@ -9,11 +9,10 @@
       <xpath expr="//field[@name='tag_ids']" position="after">
         <field name="state_id" string="Location" />
 
-        <field name="product_ids" string="Solution"/>
-        <field name="quantity" />
-        <field name="usable_kWh_opportunity"/>
-        <field name="power_kW_opportunity"/>
-
+        <!-- <field name="product_ids" string="Solution"/> -->
+        <!-- <field name="quantity" /> -->
+        <!-- <field name="usable_kWh_opportunity"/> -->
+        <!-- <field name="power_kW_opportunity"/> -->
 
       </xpath>
 
@@ -22,8 +21,8 @@
           <field name="installer"/>
           <field name="last_contact_date"/>
           <field name="follow_up_comments" />
-          <field name="usable_kWh_product"/>
-          <field name="power_kW_product"/>
+          <!-- <field name="usable_kWh_product"/> -->
+          <!-- <field name="power_kW_product"/> -->
         </group>
       </xpath>
 
@@ -38,6 +37,26 @@
       <field name="probability" position="attributes">
         <attribute name="string">Chance of Sale</attribute>
       </field>
+
+      <notebook position="inside">
+        <page string="Product" name="crm_product">
+          <field name="product_ids" widget="one2many">
+            <tree string="Add Product" editable="bottom">
+              <field name="product_ids" />
+              <field name="solution" />
+              <field name="power_kW_product" />
+              <field name="usable_kWh_product" />
+              <field name="quantity" />
+              <field name="product_price" widget="monetary"/>
+              <field name="subtotal"  sum="Total" widget="monetary" />
+              <!-- <field name="company_currency" invisible="1"/> -->
+              <field name="power_kW_opportunity" />
+              <field name="usable_kWh_opportunity" />
+
+            </tree>
+          </field>
+        </page>
+      </notebook>
     </field>
   </record>
 
