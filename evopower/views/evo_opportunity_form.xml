@@ -8,7 +8,7 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='tag_ids']" position="after">
         <field name="state_id" string="Location" />
-        
+
         <!-- <field name="product_ids" string="Solution"/> -->
         <!-- <field name="quantity" /> -->
         <!-- <field name="usable_kWh_opportunity"/> -->
@@ -45,14 +45,14 @@
             <tree string="Add Product" editable="bottom">
               <field name="product_ids" string="System"/>
               <field name="solution" />
-              <field name="power_kW_product" sum="Power kW Total"/>
-              <field name="usable_kWh_product" sum="Usable kWh Total" />
+              <field name="power_kW_product"/>
+              <field name="usable_kWh_product" />
               <field name="quantity" />
               <field name="product_price" widget="monetary" options="{'currency_field': 'company_currency'}"/>
               <field name="subtotal" sum="subtotal" widget="monetary" options="{'currency_field': 'company_currency'}"/>
               <field name="company_currency" invisible="1"/>
-              <field name="power_kW_opportunity" />
-              <field name="usable_kWh_opportunity" />
+              <field name="power_kW_opportunity" sum="Power kW Total"/>
+              <field name="usable_kWh_opportunity" sum="Usable kWh Total"/>
               <field name="product_subtotal" />
             </tree>
           </field>
