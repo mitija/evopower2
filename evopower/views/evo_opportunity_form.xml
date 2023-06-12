@@ -21,7 +21,7 @@
           <field name="installer"/>
           <field name="last_contact_date"/>
           <field name="follow_up_comments" />
-          <field name="weighted_nominal" />
+          <field name="nominal_value" />
           <!-- <field name="usable_kWh_product"/> -->
           <!-- <field name="power_kW_product"/> -->
         </group>

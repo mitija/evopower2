@@ -10,17 +10,17 @@ class EvoSaleOpportunity(models.Model):
     follow_up_comments = fields.Char(_("Last Follow Up Comments"))
     comments = fields.Char(_("Comments"), compute='_compute_comments')
     last_contact_date = fields.Date()
-    weighted_nominal = fields.Integer(string='Weighted Nominal')
+    weighted_nominal = fields.Integer(string='Weighted Nominal', compute='_nominal_value')
     system_all = fields.Char(_('System'), compute='_compute_system_string')
     solution_all = fields.Char(_('Solution'), compute='_compute_solution_string')
-    nominal_value = fields.Integer(string='Nominal Value', compute='_nominal_value')
+    nominal_value = fields.Integer(string='Nominal Value')
     weighted_forecast = fields.Integer(string='Weighted Forecast', compute='_weighted_forecast')
 
     power_kW_opportunity = fields.Integer(string='Power kW Opportunity', compute='_power_kW_opportunity')
     usable_kWh_opportunity = fields.Integer(string='Usable kWh Opportunity', compute='_usable_kWh_opportunity')
     
     kw_weighted_forecast = fields.Integer(string='kW Weighted Forecast', compute='_kw_weighted_forecast')
-    kwh_weighted_forecast = fields.Integer(string='kWh Weighted Forecast', compute='_kwh_weighteed_forecast')
+    kwh_weighted_forecast = fields.Integer(string='kWh Weighted Forecast', compute='_kwh_weighted_forecast')
 
     lost_reason_name = fields.Char(related='lost_reason_id.display_name', string='Lost Reason Name')
     lost_feedback = fields.Html(
@@ -69,10 +69,10 @@ class EvoSaleOpportunity(models.Model):
                 kwh_oppor_total += (product.usable_kWh_product * product.quantity)
             record.usable_kWh_opportunity = kwh_oppor_total
 
-    @api.depends('weighted_nominal', 'probability')
+    @api.depends('nominal_value', 'probability')
     def _nominal_value(self):
         for record in self:
-            record.nominal_value = record.weighted_nominal * record.chance_of_sale
+            record.weighted_nominal = record.nominal_value * record.chance_of_sale
     
     @api.depends('product_ids', 'probability')
     def _kw_weighted_forecast(self):
@@ -80,7 +80,7 @@ class EvoSaleOpportunity(models.Model):
             record.kw_weighted_forecast = record.power_kW_opportunity * record.chance_of_sale
 
     @api.depends('product_ids', 'probability')
-    def _kwh_weighteed_forecast(self):
+    def _kwh_weighted_forecast(self):
         for record in self:
             record.kwh_weighted_forecast = record.usable_kWh_opportunity * record.chance_of_sale
     
