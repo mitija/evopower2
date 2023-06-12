@@ -13,7 +13,7 @@ class EvoSaleOpportunity(models.Model):
     weighted_nominal = fields.Integer(string='Weighted Nominal')
     system_all = fields.Char(_('System'), compute='_compute_system_string')
     solution_all = fields.Char(_('Solution'), compute='_compute_solution_string')
-    nominal_value = fields.Integer(string='Weighted Nominal Value', compute='_nominal_value')
+    nominal_value = fields.Integer(string='Nominal Value', compute='_nominal_value')
     weighted_forecast = fields.Integer(string='Weighted Forecast', compute='_weighted_forecast')
 
     power_kW_opportunity = fields.Integer(string='Power kW Opportunity', compute='_power_kW_opportunity')
@@ -112,6 +112,7 @@ class EvoCrmProduct(models.Model):
     solution = fields.Char(related='product_ids.product_category')
     product_price = fields.Float(related='product_ids.list_price', string='Price', default=0.0, readonly=False, store=True)
     subtotal = fields.Integer(_('Subtotal'), compute='_count_subtotal')
+    product_subtotal = fields.Integer(_('Product Subtotal'), compute='_count_product_subtotal')
     power_kW_opportunity = fields.Integer(string='Power kW Opportunity', compute='_power_kW_opportunity')
     usable_kWh_opportunity = fields.Integer(string='Usable kWh Opportunity', compute='_usable_kWh_opportunity')
     
@@ -119,6 +120,11 @@ class EvoCrmProduct(models.Model):
     def _count_subtotal(self):
         for product in self:
             product.subtotal = product.quantity * product.product_price
+
+    @api.depends('power_kW_opportunity', 'usable_kWh_opportunity')
+    def _count_product_subtotal(self):
+        for product in self:
+            product.subtotal = product.power_kW_opportunity + product.usable_kWh_opportunity
 
     @api.depends('quantity', 'power_kW_product')
     def _power_kW_opportunity(self):

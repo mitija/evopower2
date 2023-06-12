@@ -53,6 +53,7 @@
               <field name="company_currency" invisible="1"/>
               <field name="power_kW_opportunity" />
               <field name="usable_kWh_opportunity" />
+              <field name="product_subtotal" />
             </tree>
           </field>
         </page>
