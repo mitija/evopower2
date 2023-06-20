@@ -8,24 +8,21 @@
     <field name="arch" type="xml">
       <xpath expr="//field[@name='tag_ids']" position="after">
         <field name="state_id" string="Location" />
-
-        <!-- <field name="product_ids" string="Solution"/> -->
-        <!-- <field name="quantity" /> -->
-        <!-- <field name="usable_kWh_opportunity"/> -->
-        <!-- <field name="power_kW_opportunity"/> -->
-
       </xpath>
 
       <xpath expr="//group[@name='opportunity_partner']" position="after">
         <group name="evo_opportunity_form">
-          <field name="installer"/>
+          <!-- <field name="installer"/> -->
           <field name="last_contact_date"/>
           <field name="follow_up_comments" />
           <field name="nominal_value" />
-          <!-- <field name="usable_kWh_product"/> -->
-          <!-- <field name="power_kW_product"/> -->
         </group>
       </xpath>
+
+      <xpath expr="//field[@name='partner_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
 
       <field name="user_id" position="attributes">
         <attribute name="string">Owner</attribute>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <data>
+    <record id="evo_kanban_view_inherit" model="ir.ui.view">
+      <field name="name">crm.lead.kanban.inherit</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+      <field name="arch" type="xml">
+        <xpath expr="//t[@t-name='kanban-box']//div[contains(@class, 'o_dropdown_kanban')]" position="before">
+            <widget name="web_ribbon" title="Won" attrs="{'invisible': [('probability', '&lt;', 100)]}"/>
+        </xpath>
+      </field>
+    </record>
+  </data>
+
+</odoo>
