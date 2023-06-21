@@ -5,7 +5,7 @@ class EvoSaleOpportunity(models.Model):
     _order = 'stage_id'
 
     product_ids = fields.One2many('crm.lead.product', 'lead_id', string='Products')
-    installer = fields.Char(_("Installer"))
+    epc = fields.Many2one('res.partner', string='EPC')
     chance_of_sale = fields.Float(string='Chance of Sale', compute='_compute_chance_of_sale')
     follow_up_comments = fields.Char(_("Last Follow Up Comments"))
     comments = fields.Char(_("Comments"), compute='_compute_comments')

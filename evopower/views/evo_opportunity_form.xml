@@ -12,7 +12,7 @@
 
       <xpath expr="//group[@name='opportunity_partner']" position="after">
         <group name="evo_opportunity_form">
-          <!-- <field name="installer"/> -->
+          <field name="epc"/>
           <field name="last_contact_date"/>
           <field name="follow_up_comments" />
           <field name="nominal_value" />
