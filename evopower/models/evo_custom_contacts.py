@@ -1,6 +1,5 @@
 from odoo import api, fields, models, _
 
-#TODO: add to security groups
 class ChannelGroup(models.Model):
     _name = 'channel.group'
 
@@ -22,7 +21,7 @@ class PartnerInstaller(models.Model):
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     
-    channel_group_id = fields.Many2one('channel.group', string='Channel Group')
+    # channel_group_id = fields.Many2one('channel.group', string='Channel Group')
     market_map = fields.Many2one('market.map', string='Market Map')
     close_date = fields.Date(string='Close Date')
     company_domain_name = fields.Char(string='Company Domain Name')
@@ -31,7 +30,6 @@ class ResPartner(models.Model):
     last_activity_date = fields.Datetime(string='Last Activity Date')
     linkedin_bio = fields.Text(string='LinkedIn Bio')
     linkedin_company_page = fields.Char(string='LinkedIn Company Page')
-    market_map = fields.Many2one('market.map', string='Market Map')
     parent_company_id = fields.Many2one('res.partner', string='Parent Company')
     child_company_id = fields.One2many('res.partner','parent_company_id', string='Child Company')
     last_contacted_date = fields.Datetime(string='Last Contacted Date')
