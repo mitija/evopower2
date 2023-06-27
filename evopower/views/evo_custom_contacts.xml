@@ -11,7 +11,7 @@
         <field name="market_map" />
       </xpath>
 
-      <xpath expr="//page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='misc']/field[@name='industry_id']" position="after"></xpath>
+      <xpath expr="//page[@name='sales_purchases']/group[@name='container_row_2']/group[@name='misc']/field[@name='industry_id']" position="after">
         <field name="company_domain_name"/>
         <field name="user_created" />
         <field name="last_activity_date" />
