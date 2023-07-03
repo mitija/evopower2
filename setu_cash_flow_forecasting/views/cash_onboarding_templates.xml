@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ONBOARDING PANELS -->
+     <template id="cash_dashboard_onboarding_panel" name="cash.forecast.onboarding.panel">
+        <t t-call="base.onboarding_container">
+            <t t-set="classes" t-value="'o_onboarding_blue'"/>
+            <t t-set="bg_image" t-value="'/setu_cash_flow_forecasting/static/src/img/cash_dashboard_onboarding_bg.jpg'"/>
+            <t t-set="close_method" t-value="'action_close_cash_forecasting_onboarding'"/>
+            <t t-set="close_model" t-value="'res.company'"/>
+            <t t-set="text_completed">Congratulations! You are all set.</t>
+
+            <t t-call="setu_cash_flow_forecasting.cash_onboarding_fiscal_year_step" name="cash_fiscal_year_step" />
+            <t t-call="setu_cash_flow_forecasting.cash_onboarding_forecast_categories_step" name="cash_bank_forecast_categories_step"/>
+            <t t-call="setu_cash_flow_forecasting.cash_onboarding_forecast_type_step" name="forecast_type_step" />
+            <t t-call="setu_cash_flow_forecasting.cash_onboarding_create_forecast_step" name="create_forecast_step"/>
+        </t>
+    </template>
+
+
+     <template id="cash_onboarding_fiscal_year_step">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">Forecast Periods</t>
+            <t t-set="description">Define your Fiscal years &amp; Fiscal Period.</t>
+            <t t-set="btn_text">Configure Fiscal years &amp; Period</t>
+            <t t-set="done_text">Step Completed!</t>
+            <t t-set="method" t-value="'cash_setting_init_fiscal_year_action'" />
+            <t t-set="model" t-value="'res.company'" />
+            <t t-set="state" t-value="state.get('fiscal_year_setup_data_state')" />
+        </t>
+    </template>
+
+    <template id="cash_onboarding_forecast_categories_step">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">Forecast Category</t>
+            <t t-set="description">Define your multiple categories of Income/Expense.</t>
+            <t t-set="btn_text">Add Forecast categories</t>
+            <t t-set="done_text">Step Completed!</t>
+            <t t-set="method" t-value="'cash_setting_init_forecast_categories_action'" />
+            <t t-set="model" t-value="'res.company'" />
+            <t t-set="state" t-value="state.get('forecast_category_setup_data_state')" />
+        </t>
+    </template>
+
+     <template id="cash_onboarding_forecast_type_step">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">Forecast Type</t>
+            <t t-set="description">Define Income/Expense Type for each Income/Expense category,
+                formulation of Cash Forecast and link multiple accounts.</t>
+            <t t-set="btn_text">Add Forecast Types</t>
+            <t t-set="done_text">Forecast Type Created</t>
+            <t t-set="method" t-value="'cash_setting_init_forecast_type_action'" />
+            <t t-set="model" t-value="'res.company'" />
+            <t t-set="state" t-value="state.get('forecast_type_setup_data_state')" />
+        </t>
+    </template>
+
+    <template id="cash_onboarding_create_forecast_step">
+        <t t-call="base.onboarding_step">
+            <t t-set="title">Create Forecast</t>
+            <t t-set="description">Calculate your first Cash Forecast.</t>
+            <t t-set="btn_text">Create</t>
+            <t t-set="done_text">First Forecast Created</t>
+            <t t-set="method" t-value="'cash_setting_init_create_forecast_action'" />
+            <t t-set="model" t-value="'res.company'" />
+            <t t-set="state" t-value="state.get('create_forecast_data_state')" />
+        </t>
+    </template>
+</odoo>

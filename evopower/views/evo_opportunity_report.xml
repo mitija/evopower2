@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="sales_opportunity_report" model="ir.ui.view">
+    <field name="name">sales.opportunity.register</field>
+    <field name="model">crm.lead</field>
+    <field name="type">tree</field>
+    <field name="arch" type="xml">
+      <tree create='false'>
+        <field name="stage_id" string="Project Status"/>
+        <field name="name" string="Project Name"/>
+        <field name="epc" />
+        <field name="create_date" widget="date" string="Date Entered"/>
+        <field name="user_id" string="Owner"/>
+        <field name="state_id" string="Location"/>
+        <field name="comments"/>
+        <field name="solution_all"/>
+        <field name="system_all" string="System"/>
+        <field name="follow_up_comments"/>
+        <field name="last_contact_date" />
+        <field name="power_kW_opportunity"/>
+        <field name="usable_kWh_opportunity"/>
+        <field name="nominal_value" />
+        <field name="expected_revenue" sum="Potential Opportunity" string="Potential Opportunity" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+        <field name="company_currency" invisible="1"/>
+        <field name="chance_of_sale" string="Chance of Sale" widget="percentage"/>
+        <field name="date_deadline" string="Potential PO Date"/>
+        <field name="weighted_forecast" widget="monetary" options="{'currency_field': 'company_currency'}" string="$ Weighted Forecast"/>
+        <field name="kw_weighted_forecast"/>
+        <field name="kwh_weighted_forecast"/>
+        <field name="weighted_nominal" />
+      </tree>
+    </field>
+
+  </record>
+
+  <record id="action_sales_opportunity_register" model="ir.actions.act_window">
+    <field name="name">Sales Opportunity Register</field>
+    <field name="res_model">crm.lead</field>
+    <field name="view_mode">tree,pivot</field>
+    <field name="view_id" ref="sales_opportunity_report"></field>
+  </record>
+
+  <menuitem id="evo_sale_opportunity" name="Sale Opportunity Register" parent="crm.crm_menu_report" action="action_sales_opportunity_register" sequence="6"/>
+</odoo>

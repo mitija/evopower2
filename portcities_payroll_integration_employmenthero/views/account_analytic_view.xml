@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="view_account_analytic_account_form_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='main']/group" position="inside">
+                <field name="keypay_location_external_id" string="Keypay Location ID" groups="base.group_no_one"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_line_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.timesheet.line.tree.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="task_id" position="after">
+                <field name="account_id" optional="show"/>
+                <field name="employee_id" optional="show"/>
+                <field name="worktype_id" required="1"/>
+            </field>
+            <field name="unit_amount" position="after">
+                <field name="state" readonly="1"/>
+                <field name="is_sync_success" readonly="1"/>
+            </field>
+            <field name="unit_amount" position="before">
+                <field name="time_start" widget="timesheet_uom" attrs="{'readonly': [('state', '!=', 'open')]}"/>
+                <field name="time_stop" widget="timesheet_uom" attrs="{'readonly': [('state', '!=', 'open')]}"/>
+            </field>
+            <field name="unit_amount" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

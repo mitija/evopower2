@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sync_keypay_user,access_sync_keypay_user,model_sync_keypay,base.group_user,1,1,1,1
+access_sync_keypay_portal_user,access_sync_keypay_portal_user,model_sync_keypay,base.group_portal,1,1,1,1
+access_sync_keypay_log_user,access_sync_keypay_log_user,model_sync_keypay_log,base.group_user,1,1,1,1
+access_sync_keypay_log_portal_user,access_sync_keypay_log_portal_user,model_sync_keypay_log,base.group_portal,1,1,1,1
+access_project_task_work_type_user,access_project_task_work_type_user,model_project_task_work_type,base.group_user,1,1,1,1

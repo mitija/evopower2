@@ -1,0 +1,10 @@
+<odoo>
+	<record model="ir.cron" id="sync_keypay_worktype_cron">
+        <field name="name">Keypay WorkType: Action Sync</field>
+        <field name="model_id" ref="model_sync_keypay"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_sync_keypay_worktype()</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

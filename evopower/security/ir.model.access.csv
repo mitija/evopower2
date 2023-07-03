@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"crm_lead_product","crm.lead.product","model_crm_lead_product","base.group_user",1,1,1,0
+"channel_group","channel.group","model_channel_group","base.group_user",1,1,1,0
+"market_map","'market.map","model_market_map","base.group_user",1,1,1,0
+"partner_installer","partner.installer","model_partner_installer","base.group_user",1,1,1,0

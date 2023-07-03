@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="res_company_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.company.form.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_info']" position="after">
+                <page string="Keypay" name="keypay_integration">
+                    <group string="Authentication">
+                        <field name="keypay_secret_key"/>
+                        <field name="keypay_secret_encoded"/>
+                    </group>
+                    <group string="Location">
+                        <field name="keypay_url_location"/>
+                    </group>
+                    <group string="Timesheet">
+                        <field name="keypay_url_timesheet"/>
+                    </group>
+                    <group string="Manager">
+                        <field name="keypay_url_manager"/>
+                    </group>
+                    <group string="WorkType">
+                        <field name="keypay_url_worktype"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

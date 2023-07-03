@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="SetuShowForcastingFormula" owl="1">
+        <div t-if="props.value">
+            <div style="width:fit-content;">
+                    <div style="font-size:20px;float:left;margin-top:10px;">
+                        <strong id="title"><t t-esc="title"/></strong>
+                    </div>
+                <div>
+                    <a t-att-info="props.value" role="button" tabindex="0" class="js_show_forcasting_formula fa fa-info-circle"
+                       style="margin-left:8px; margin-top:20px;color:#347f84;width:20px;" aria-label="Info"
+                       title="Info"
+                       data-toggle="popover"/>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+    <t t-name="SetuShowForcastingFormulaPopOver">
+        <div id="dipeshnakum">
+            <t t-foreach="content" t-as="item" t-key="item_index">
+<!--                <t t-debug="pdb"/>-->
+                <t t-esc="item"/>
+                <br/>
+            </t>
+        </div>
+    </t>
+
+</templates>
