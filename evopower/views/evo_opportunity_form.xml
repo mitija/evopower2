@@ -39,7 +39,7 @@
       <notebook position="inside">
         <page string="Product" name="crm_product">
           <field name="product_ids" widget="one2many">
-            <tree string="Add Product" editable="bottom">
+            <tree string="Add Product" editable="bottom" deletable="true" delete="1">
               <field name="product_ids" string="System"/>
               <field name="solution" />
               <field name="power_kW_product"/>

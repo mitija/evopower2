@@ -37,7 +37,7 @@
   <record id="action_sales_opportunity_register" model="ir.actions.act_window">
     <field name="name">Sales Opportunity Register</field>
     <field name="res_model">crm.lead</field>
-    <field name="view_mode">tree,pivot</field>
+    <field name="view_mode">tree,form,pivot</field>
     <field name="view_id" ref="sales_opportunity_report"></field>
   </record>
 
