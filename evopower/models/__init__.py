@@ -1,1 +1,1 @@
-from . import sale_opportunity, evo_product, evo_lost_reason, evo_custom_contacts, evo_sale_order
+from . import sale_opportunity, evo_product, evo_lost_reason, evo_custom_contacts, evo_sale_order, evo_account_move

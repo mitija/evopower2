@@ -2,7 +2,7 @@
   'name' : 'evopower',
   'version': '1.0',
   'summary': 'Custom CRM App',
-  'depends': ['sale_crm', 'base'],  
+  'depends': ['sale_crm', 'base','account'],  
   'description' : 'EVO Power Application',
   'data' : [
       'security/ir.model.access.csv',
