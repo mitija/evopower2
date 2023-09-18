@@ -1,1 +1,6 @@
-from . import account_move, custom_contacts, lost_reason, product_template, sale_opportunity, sale_order
+from . import account_move
+from . import custom_contacts
+from . import lost_reason
+from . import product_template
+from . import sale_opportunity
+from . import sale_order
