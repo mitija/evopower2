@@ -8,7 +8,7 @@ from odoo.tools import (
 )
 from collections import defaultdict
 
-class EvoAccountMove(models.Model):
+class AccountMove(models.Model):
     _inherit = 'account.move'
 
     def _post(self, soft=True):

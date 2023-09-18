@@ -1,6 +1,6 @@
 from odoo import models, _
 
-class EvoLostReason(models.TransientModel):
+class LostReason(models.TransientModel):
   _inherit = 'crm.lead.lost'
   _description = 'Get Lost Reason'
 

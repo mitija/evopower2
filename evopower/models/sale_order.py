@@ -1,7 +1,7 @@
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError, UserError, ValidationError
 
-class EvoSaleOrder(models.Model):
+class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     def action_confirm(self):

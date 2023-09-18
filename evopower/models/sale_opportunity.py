@@ -1,6 +1,6 @@
 from odoo import _, api, fields, models
 import re
-class EvoSaleOpportunity(models.Model):
+class SaleOpportunity(models.Model):
     _inherit = 'crm.lead'
     _order = 'stage_id'
 

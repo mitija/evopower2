@@ -1,9 +1,11 @@
 {
-  'name' : 'evopower',
+  'name': "Customization for Evopower",
   'version': '1.0',
-  'summary': 'Custom CRM App',
+  'summary': 'Custom Module created for Evopower',
+  'description': "EVO Power Application",
+  'author': "Mplus Software",
+  'website': "http://www.yourcompany.com",
   'depends': ['sale_crm', 'base','account'],  
-  'description' : 'EVO Power Application',
   'data' : [
       'security/ir.model.access.csv',
       'views/evo_opportunity_report.xml',
@@ -14,3 +16,4 @@
       'views/evo_custom_contacts.xml',
   ]
 }
+
