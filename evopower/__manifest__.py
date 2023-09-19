@@ -8,9 +8,9 @@
   'depends': ['sale_crm', 'base','account'],  
   'data' : [
       'security/ir.model.access.csv',
-      'views/evo_opportunity_report.xml',
       'views/crm_lead_views.xml',
-      'views/res_partner_form.xml',
+      'views/res_partner_views.xml',
+      'views/sale_order_views.xml',
   ]
 }
 
