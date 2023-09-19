@@ -3,7 +3,7 @@ import re
 from odoo import _, api, fields, models
 
 
-class SaleOpportunity(models.Model):
+class Lead(models.Model):
     _inherit = "crm.lead"
     _order = "stage_id"
 

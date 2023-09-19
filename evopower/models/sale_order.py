@@ -17,14 +17,14 @@ class SaleOrder(models.Model):
     def _compute_currency_rate(self):
         cache = {}
         for order in self:
+            if order.currency_rate:
+                continue
             order_date = order.date_order.date()
             if not order.company_id:
                 order.currency_rate = order.currency_id.with_context(date=order_date).rate or 1.0
                 continue
             elif not order.currency_id:
                 order.currency_rate = 1.0
-            elif order.currency_rate:
-                continue
             else:
                 key = (order.company_id.id, order_date, order.currency_id.id)
                 if key not in cache:
