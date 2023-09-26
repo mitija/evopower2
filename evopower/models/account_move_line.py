@@ -1,6 +1,4 @@
-
-
-from odoo import api, fields, models, Command, _
+from odoo import Command, _, api, fields, models
 
 
 class AccountMoveLine(models.Model):
@@ -14,6 +12,7 @@ class AccountMoveLine(models.Model):
                 line.currency_rate = line.sale_line_ids.order_id.manual_currency_rate
               elif line.journal_id.type == 'purchase':
                 line.currency_rate = line.purchase_line_id.order_id.manual_currency_rate
+              else:
+                line.currency_rate = 1
           else:
               line.currency_rate = 1
-
