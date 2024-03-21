@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="attachment_preview_ms_office.WebClientViewAttachmentView" t-inherit="mail.WebClientViewAttachmentView" t-inherit-mode="extension" owl="1">
+        <xpath expr="//iframe[@t-if='webClientViewAttachmentView.thread.mainAttachment.isPdf']" position="after">
+            <iframe t-if="webClientViewAttachmentView.thread.mainAttachment.isMsOffice" class="mb48"
+            t-attf-src="https://view.officeapps.live.com/op/embed.aspx?src=#{window.location.origin}/web/content/#{webClientViewAttachmentView.thread.mainAttachment.id}?access_token=#{webClientViewAttachmentView.thread.mainAttachment.access_token}"/>
+        </xpath>
+    </t>
+    <t t-name="attachment_preview_ms_office.AttachmentViewer" t-inherit="mail.AttachmentViewer" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-if='attachmentViewer.attachmentViewerViewable.isPdf']" position="after">
+            <t t-if="attachmentViewer.attachmentViewerViewable.isMsOffice">
+                <iframe class="o_AttachmentViewer_view o_AttachmentViewer_viewIframe border-0 w-75 h-100"
+                style="position: absolute; top: 0; bottom: 0; left: 0;
+                right: 0; height: 90%;
+                margin-top: 40px;
+                margin-left: auto;
+                margin-right: auto;"
+                t-att-class="{ 'w-100': messaging.device.isSmall }"
+                t-attf-src="https://view.officeapps.live.com/op/embed.aspx?src=#{window.location.origin}/web/content/#{attachmentViewer.attachmentViewerViewable.attachmentId}?access_token=#{attachmentViewer.attachmentViewerViewable.attachmentToken}"/>
+            </t>
+        </xpath>
+    </t>
+</templates>
+    
